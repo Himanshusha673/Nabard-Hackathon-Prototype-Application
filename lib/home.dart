@@ -31,6 +31,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   bool ownVariety = true;
   String? imagePath;
+  bool isimagecaptured = false;
   XFile? capturedImage;
   void _getImage() async {
     try {
@@ -43,6 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
       setState(() {
         capturedImage = imageTemp;
         imagePath = imageXfile.path;
+        isimagecaptured = true;
       });
     } catch (e) {
       debugPrint('error Message is ${e.toString()}');
@@ -90,12 +92,12 @@ class _MyHomePageState extends State<MyHomePage> {
     'Orange': 'FR',
     'MuskMelon': 'FR',
     'Sapota': 'FR',
-    'Onion': 'VG',
+    'onion': 'VG',
     'potato': 'VG',
-    'Tomato': 'VG',
-    'Shelling Peas': 'VG',
+    'tomato': 'VG',
+    'shelling Peas': 'VG',
     'Bitter Gourd': 'VG',
-    'Cauliflower': 'VG',
+    'cauliflower': 'VG',
   };
 
   List _commmodities = [];
@@ -145,30 +147,30 @@ class _MyHomePageState extends State<MyHomePage> {
     'darjeeling Mandarin': 'Orange',
 
     ////////////////////
-    'Bhima Raj': 'Onion',
-    'Bhima Red': 'Onion',
-    'Bhima Super': 'Onion',
-    'Ludhiana': 'Onion',
+    'Bhima Raj': 'onion',
+    'Bhima Red': 'onion',
+    'Bhima Super': 'onion',
+    'Ludhiana': 'onion',
     'Kufri Sindhuri': 'potato',
     'Kufri ChanderMukhi': 'potato',
     'Kufri Jyoti': 'potato',
     'Kufri Lauvkar': 'potato',
-    'Arka Saurabh': 'Tomato',
-    'Arka Vikas': 'Tomato',
-    'Arka Ahuti': 'Tomato',
-    'Arka Ashish': 'Tomato',
-    'Arkel': 'Shelling Peas',
-    'Jwahar Matar-4': 'Shelling Peas',
-    'Bonneville': 'Shelling Peas',
-    'P-8': 'Shelling Peas',
+    'Arka Saurabh': 'tomato',
+    'Arka Vikas': 'tomato',
+    'Arka Ahuti': 'tomato',
+    'Arka Ashish': 'tomato',
+    'Arkel': 'shelling Peas',
+    'Jwahar Matar-4': 'shelling Peas',
+    'Bonneville': 'shelling Peas',
+    'P-8': 'shelling Peas',
     'MDU 1': 'Bitter Gourd',
     'Arka Harit': 'Bitter Gourd',
     'Priya': 'Bitter Gourd',
     'Preethi': 'Bitter Gourd',
-    'Pusa Deepali': 'Cauliflower',
-    'Early Kunwari': 'Cauliflower',
-    'Pushpa': 'Cauliflower',
-    'Aishwarya': 'Cauliflower',
+    'Pusa Deepali': 'cauliflower',
+    'Early Kunwari': 'cauliflower',
+    'Pushpa': 'cauliflower',
+    'Aishwarya': 'cauliflower',
   };
 
   List _varieties = [];
@@ -182,25 +184,27 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   int _selectedsize = 0;
+  List<int> items = [];
   var sizes = {
-    '65': 'Onion',
-    '45': 'Onion',
-    '25': 'Onion',
+    65: 'onion',
+    45: 'onion',
+    25: 'onion',
+
     70: 'potato',
     50: 'potato',
-    70: 'potato',
-    '65': 'Tomato',
-    '55': 'Tomato',
-    '45': 'Tomato',
-    '65': 'Shelling Peas',
-    '55': 'Shelling Peas',
-    '45': 'Shelling Peas',
-    '150': 'Bitter Gourd',
-    '100': 'Bitter Gourd',
-    '60': 'Bitter Gourd',
-    '65': 'Cauliflower',
-    '55': 'Cauliflower',
-    '45': 'Cauliflower',
+    60: 'potato',
+    // 65: 'tomato',
+    // 55: 'tomato',
+    // 45: 'tomato',
+    // 65: 'shelling Peas',
+    // 55: 'shelling Peas',
+    // 45: 'shelling Peas',
+    // 150: 'Bitter Gourd',
+    // 100: 'Bitter Gourd',
+    // 60: 'Bitter Gourd',
+    // 65: 'cauliflower',
+    // 55: 'Cauliflower',
+    // 45: 'cauliflower',
   };
 
   List _sizeofcommodity = [];
@@ -215,27 +219,27 @@ class _MyHomePageState extends State<MyHomePage> {
 
   String _selectedDefect = "";
   var DefectType = {
-    'Cut': 'Onion',
-    'Split-Double-split': 'Onion',
-    'Sprouted': 'Onion',
-    'rooting': 'Onion',
+    'Cut': 'onion',
+    'Split-Double-split': 'onion',
+    'Sprouted': 'onion',
+    'rooting': 'onion',
     'Cracks-cut': 'potato',
     'greening': 'potato',
     'Holes': 'potato',
     'mechanical-injury': 'potato',
-    'Dry-crack-cut': 'Tomato',
-    'sunburn': 'Tomato',
-    'Mechanical-injury': 'Tomato',
-    'Discolouration': 'Tomato',
-    'Under-developed': 'Shelling Peas',
-    'BlackBrown-spots': 'Shelling Peas',
-    'Dry_skin': 'Shelling Peas',
+    'Dry-crack-cut': 'tomato',
+    'sunburn': 'tomato',
+    'Mechanical-injury': 'tomato',
+    'Discolouration': 'tomato',
+    'Under-developed': 'shelling Peas',
+    'BlackBrown-spots': 'shelling Peas',
+    'Dry_skin': 'shelling Peas',
     'Skin_color_defect': 'Bitter Gourd',
     'color': 'Bitter Gourd',
     'holes': 'Bitter Gourd',
-    'brushing': 'Cauliflower',
-    'color': 'Cauliflower',
-    'wooliness': 'Cauliflower',
+    'brushing': 'cauliflower',
+    'color': 'cauliflower',
+    'wooliness': 'cauliflower',
   };
 
   List _defects = [];
@@ -250,69 +254,71 @@ class _MyHomePageState extends State<MyHomePage> {
 
   int _selectedDefectValue = 0;
   var defectValue = {
-    '1': 'Cut',
-    '2': 'Cut',
-    '15': 'Cut',
-    '2': 'Split-Double-split',
-    '5': 'Split-Double-split',
-    '8': 'Split-Double-split',
-    '2': 'Sprouted',
-    '5': 'Sprouted',
-    '8': 'Sprouted',
-    '2': 'rooting',
-    '5': 'rooting',
-    '8': 'rooting',
+    1: 'Cut',
+    2: 'Cut',
+    15: 'Cut',
+
+    // 2: 'Split-Double-split',
+    // 5: 'Split-Double-split',
+    // 8: 'Split-Double-split',
+    // 2: 'Sprouted',
+    // 5: 'Sprouted',
+    // 8: 'Sprouted',
+    // 2: 'rooting',
+    // 5: 'rooting',
+    // 8: 'rooting',
+
     5: 'Cracks-cut',
     6: 'Cracks-cut',
-    15: 'Cracks-cut',
-    '2': 'greening',
-    '3': 'greening',
-    '4': 'greening',
-    '1': 'Holes',
-    '2': 'Holes',
-    '3': 'Holes',
-    '2': 'mechanical-injury',
-    '3': 'mechanical-injury',
-    '4': 'mechanical-injury',
-    '2': 'Dry-crack-cut',
-    '3': 'Dry-crack-cut',
-    '4': 'Dry-crack-cut',
-    '2': 'sunburn',
-    '3': 'sunburn',
-    '4': 'sunburn',
-    '2': 'Mechanical-injury',
-    '2': 'Mechanical-injury',
-    '4': 'Mechanical-injury',
-    '3': 'Discolouration',
-    '5': 'Discolouration',
-    '6': 'Discolouration',
-    '3': 'Under-developed',
-    '5': 'Under-developed',
-    '6': 'Under-developed',
-    '1': 'BlackBrown-spots',
-    '2': 'BlackBrown-spots',
-    '3': 'BlackBrown-spots',
-    '10': 'Dry_skin',
-    '20': 'Dry_skin',
-    '21': 'Dry_skin',
-    '3': 'Skin_color_defect',
-    '5': 'Skin_color_defect',
-    '7': 'Skin_color_defect',
-    '70': 'color',
-    '40': 'color',
-    '39': 'color',
-    '0': 'holes',
-    '1': 'holes',
-    '2': 'holes',
-    '3': 'brushing',
-    '5': 'brushing',
-    '7': 'brushing',
-    '3': 'color',
-    '5': 'color',
-    '7': 'color',
-    '3': 'wooliness',
-    '5': 'wooliness',
-    '7': 'wooliness',
+    14: 'Cracks-cut',
+    // 2: 'greening',
+    // 3: 'greening',
+    // 4: 'greening',
+    // 1: 'Holes',
+    // 2: 'Holes',
+    // 3: 'Holes',
+    // 2: 'mechanical-injury',
+    // 3: 'mechanical-injury',
+    // 4: 'mechanical-injury',
+    // 2: 'Dry-crack-cut',
+    // 3: 'Dry-crack-cut',
+    // 4: 'Dry-crack-cut',
+    // 2: 'sunburn',
+    // 3: 'sunburn',
+    // 4: 'sunburn',
+    // 2: 'Mechanical-injury',
+    // 2: 'Mechanical-injury',
+    // 4: 'Mechanical-injury',
+    // 3: 'Discolouration',
+    // 5: 'Discolouration',
+    // 6: 'Discolouration',
+    // 3: 'Under-developed',
+    // 5: 'Under-developed',
+    // 6: 'Under-developed',
+    // 1: 'BlackBrown-spots',
+    // 2: 'BlackBrown-spots',
+    // 3: 'BlackBrown-spots',
+    // 10: 'Dry_skin',
+    // 20: 'Dry_skin',
+    // 21: 'Dry_skin',
+    // 3: 'Skin_color_defect',
+    // 5: 'Skin_color_defect',
+    // 7: 'Skin_color_defect',
+    // 70: 'color',
+    // 40: 'color',
+    // 39: 'color',
+    // 0: 'holes',
+    // 1: 'holes',
+    // 2: 'holes',
+    // 3: 'brushing',
+    // 5: 'brushing',
+    // 7: 'brushing',
+    // 3: 'color',
+    // 5: 'color',
+    // 7: 'color',
+    // 3: 'wooliness',
+    // 5: 'wooliness',
+    // 7: 'wooliness',
   };
 
   List _defectvalues = [];
@@ -350,7 +356,7 @@ class _MyHomePageState extends State<MyHomePage> {
     try {
       final http.Response res = await http.post(
           Uri.parse(
-              'http://ec2-3-110-203-9.ap-south-1.compute.amazonaws.com:8000/post/'),
+              'http://ec2-3-110-203-9.ap-south-1.compute.amazonaws.com:8000/img/'),
           body: jsonEncode(data),
           headers: {
             'content-type': 'application/json',
@@ -380,8 +386,13 @@ class _MyHomePageState extends State<MyHomePage> {
     // final param = jsonDecode(res.body.toString());
   }
 
-  void _apiCallSetStates(path) {
+  void _apiCallSetStates(path) async {
+    Uint8List imagebytes = await capturedImage!.readAsBytes();
+    String base64image = base64.encode(imagebytes);
+    debugPrint('Base64image: $base64image');
+
     var data = {
+      'img': base64image,
       'category': _selectedCategory,
       'commodity_name': _selectedCommodity,
       'commodity_variety': _selectedVariety,
@@ -399,7 +410,8 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Scaffold(
             resizeToAvoidBottomInset: true,
             appBar: AppBar(
-              title: const Text('Farmer_Asseser'),
+              centerTitle: true,
+              title: const Text('Quality Assessment '),
             ),
             body: SingleChildScrollView(
               child: Container(
@@ -527,7 +539,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   Align(
                                     alignment: Alignment.center,
                                     child: Text(
-                                      " Size of ",
+                                      " Size range ",
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 10),
@@ -597,6 +609,14 @@ class _MyHomePageState extends State<MyHomePage> {
                         SizedBox(
                           height: 23,
                         ),
+                        Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            " defect value ",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 10),
+                          ),
+                        ),
                         Container(
                           width: 150,
                           child: DropdownButton(
@@ -608,7 +628,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             },
                             items: _defectvalues.map((city) {
                               return DropdownMenuItem(
-                                child: new Text(city.toString()),
+                                child: Text(city.toString()),
                                 value: city,
                               );
                             }).toList(),
@@ -622,7 +642,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             decoration: InputDecoration(
                                 icon: Icon(Icons.keyboard),
                                 hintText: 'type Here',
-                                labelText: 'Enter variety '),
+                                labelText: 'Enter Remarks'),
                             onSaved: (val) {
                               setState(() {
                                 _selectedVariety = val.toString();
@@ -638,43 +658,43 @@ class _MyHomePageState extends State<MyHomePage> {
                         Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              // GestureDetector(
-                              //   onTap: () {
-                              //     _getImage();
-                              //   },
-                              //   child: Container(
-                              //     height: 60,
-                              //     width: 160,
-                              //     decoration: BoxDecoration(
-                              //         borderRadius: BorderRadius.circular(8),
-                              //         color: Colors.grey),
-                              //     child: Row(
-                              //       mainAxisAlignment:
-                              //           MainAxisAlignment.spaceAround,
-                              //       children: [
-                              //         Icon(
-                              //           Icons.image,
-                              //           size: 35,
-                              //         ),
-                              //         Text(
-                              //           'Select a picture',
-                              //           style: TextStyle(color: Colors.black),
-                              //         ),
-                              //       ],
-                              //     ),
-                              //   ),
-                              // ),
-                              // SizedBox(
-                              //   width: 15,
-                              // ),
+                              GestureDetector(
+                                onTap: () {
+                                  _getImage();
+                                },
+                                child: Container(
+                                  height: 60,
+                                  width: 160,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Colors.grey),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Icon(
+                                        Icons.camera_alt,
+                                        size: 35,
+                                      ),
+                                      Text(
+                                        'Take a picture',
+                                        style: TextStyle(color: Colors.black),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
                               Container(
-                                child: isbytes
-                                    ? Image.memory(bytes)
-                                    : Image.asset('assets/cloudy.png'),
-                                height: MediaQuery.of(context).size.width,
-                                width: MediaQuery.of(context).size.width * 0.9,
+                                child: isimagecaptured
+                                    ? Image.file(File(imagePath!))
+                                    : Image.asset('assets/cloudy.png',
+                                        fit: BoxFit.cover),
+                                height: 150,
+                                width: 150,
                                 decoration: BoxDecoration(
-                                  color: Colors.grey,
                                   borderRadius: BorderRadius.circular(8),
                                   border:
                                       Border.all(width: 1, color: Colors.black),
@@ -684,12 +704,57 @@ class _MyHomePageState extends State<MyHomePage> {
                         SizedBox(
                           height: 50,
                         ),
-                        SizedBox(height: 20),
-                        Text('Rank $rank'),
-                        SizedBox(height: 20),
-                        Text('shelflife $shelflife'),
+                        Container(
+                          child: isbytes
+                              ? Image.memory(bytes)
+                              : Image.asset('assets/cloudy.png',
+                                  fit: BoxFit.cover),
+                          height: MediaQuery.of(context).size.width,
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          decoration: BoxDecoration(
+                            color: Colors.grey,
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(width: 1, color: Colors.black),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 40,
+                        ),
+                        GestureDetector(
+                          onTap: () {},
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 250),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: Colors.purple),
+                              height: 40,
+                              width: 70,
+                              child: Center(
+                                  child: Text(
+                                'Print',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              )),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 40),
+                        Text(
+                          'Rank $rank',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
                         SizedBox(
                           height: 20,
+                        ),
+                        Text('shelflife $shelflife',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold)),
+                        SizedBox(
+                          height: 40,
                         ),
                         InkWell(
                           splashColor: Colors.red,
@@ -709,7 +774,13 @@ class _MyHomePageState extends State<MyHomePage> {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(8),
                                 color: Colors.purple),
-                            child: Center(child: Text('Post')),
+                            child: Center(
+                                child: Text(
+                              'Post',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            )),
                           ),
                         )
                       ])),
