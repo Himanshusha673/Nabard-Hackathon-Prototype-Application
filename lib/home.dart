@@ -219,7 +219,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   String _selectedDefect = "";
   var DefectType = {
-    'Cut': 'onion',
+    'cut': 'onion',
     'Split-Double-split': 'onion',
     'Sprouted': 'onion',
     'rooting': 'onion',
@@ -253,9 +253,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   int _selectedDefectValue = 0;
   var defectValue = {
-    1: 'Cut',
-    2: 'Cut',
-    15: 'Cut',
+    1: 'cut',
+    2: 'cut',
+    15: 'cut',
 
     // 2: 'Split-Double-split',
     // 5: 'Split-Double-split',
@@ -703,6 +703,56 @@ class _MyHomePageState extends State<MyHomePage> {
                         SizedBox(
                           height: 50,
                         ),
+                        const SizedBox(height: 40),
+                        InkWell(
+                          splashColor: Colors.red,
+                          onTap: () {
+                            _apiCallSetStates(imagePath);
+                            // Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //         builder: (context) => MyResults(
+                            //             bytes: bytes,
+                            //             rank: rank,
+                            //             shelflife: shelflife)));
+                          },
+                          child: Container(
+                            height: 50,
+                            width: 80,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                color: Colors.purple),
+                            child: Center(
+                                child: Text(
+                              'Submit',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            )),
+                          ),
+                        ),
+                        
+                        SizedBox(
+                          height: 40,
+                        
+                        ),
+                        Text(
+                          'Rank $rank',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Text('shelflife $shelflife',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold)),
+                        SizedBox(
+                          height: 40,
+                        ),
+                        SizedBox(
+                          height: 40,
+                        ),
                         Container(
                           child: isbytes
                               ? Image.memory(bytes)
@@ -740,48 +790,6 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 40),
-                        Text(
-                          'Rank $rank',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Text('shelflife $shelflife',
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold)),
-                        SizedBox(
-                          height: 40,
-                        ),
-                        InkWell(
-                          splashColor: Colors.red,
-                          onTap: () {
-                            _apiCallSetStates(imagePath);
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (context) => MyResults(
-                            //             bytes: bytes,
-                            //             rank: rank,
-                            //             shelflife: shelflife)));
-                          },
-                          child: Container(
-                            height: 50,
-                            width: 50,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
-                                color: Colors.purple),
-                            child: Center(
-                                child: Text(
-                              'Post',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            )),
-                          ),
-                        )
                       ])),
             )));
   }
